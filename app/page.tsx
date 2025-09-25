@@ -28,18 +28,13 @@ export default function Home() {
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const bingoPhrases = [
-    'Says "Let\'s take this offline"',
-    "Shares their screen with 20+ tabs open",
+    "ASL steals the show",
     '"Can everyone see my screen?"',
     "Background noise from someone not on mute",
     'Reference to "sexy" software',
-    '"Can you hear me?"',
+    "Attempt to cut someone off",
     "Someone forgets to unmute while talking",
-    "Someone eats on mic",
-    '"Let me share my screen"',
     "Question about something in the background",
-    '"I\'ll send that in the chat"',
-    '"Sorry, was on mute"',
     "Pet makes an appearance",
     "Reference to driving/racing",
     "Internet connection issues",
@@ -47,18 +42,19 @@ export default function Home() {
     '"Can everyone go on mute?"',
     '"Next slide please"',
     "Background conversation from someone not on mute",
-    '"Let\'s circle back to this"',
+    '"Jeetu"',
     "There are over 200 people on the call",
-    "Someone forgets to stop screen sharing",
-    "Child or family member appears in background",
     "Reminder to use AI tools",
-    "Audio feedback/echo",
-    "SWAG notification",
+    "SWAG reference",
     "Pause to aknowledge a current event",
     "Splunk update",
     "AI!",
-    "Edge Up learning center"
-    ];
+    "Edge Up learning center",
+    "Check out the slido",
+    ' "At the end of the day"...',
+    '"Drive growth"',
+    ' "billions"',
+  ];
 
   const initializeBoard = () => {
     // Shuffle and pick first 25 phrases (for 5x5 grid)
@@ -234,17 +230,15 @@ export default function Home() {
                   textAlign: "center",
                   p: 1,
                   cursor: "pointer",
-                  backgroundColor: cell.isMarked
-                    ? "primary.light"
-                    : "background.paper",
-                  color: cell.isMarked
-                    ? "primary.contrastText"
-                    : "text.primary",
+                  background: cell.isMarked
+                    ? "linear-gradient(135deg, #ff9a3d 0%, #ff6a00 100%)"
+                    : "linear-gradient(135deg, #ffd199 0%, #ff9a3d 100%)",
+                  color: cell.isMarked ? "#1b1b1b" : "#1b1b1b",
                   transition: "all 0.3s ease",
                   "&:hover": {
-                    backgroundColor: cell.isMarked
-                      ? "primary.dark"
-                      : "action.hover",
+                    background: cell.isMarked
+                      ? "linear-gradient(135deg, #ff8a1a 0%, #ff5a00 100%)"
+                      : "linear-gradient(135deg, #ffc27a 0%, #ff8a1a 100%)",
                   },
                   aspectRatio: "1/1",
                   overflow: "hidden",
@@ -254,7 +248,7 @@ export default function Home() {
                   variant="caption"
                   sx={{ fontSize: "0.7rem", lineHeight: 1.2 }}
                 >
-                  {cell.text}
+                  {gameStarted || cell.text === "FREE SPACE" ? cell.text : ""}
                 </Typography>
               </Paper>
             ))}
